@@ -26,10 +26,8 @@ static void slave_handler(i2c_inst_t *i2c, i2c_slave_event_t event) {
 }
 
 void init_master() {
-  gpio_init(I2C_MASTER_SDA);
   gpio_set_function(I2C_MASTER_SDA, GPIO_FUNC_I2C);
   gpio_pull_up(I2C_MASTER_SDA);
-  gpio_init(I2C_MASTER_SCL);
   gpio_set_function(I2C_MASTER_SCL, GPIO_FUNC_I2C);
   gpio_pull_up(I2C_MASTER_SCL);
 
@@ -38,10 +36,8 @@ void init_master() {
 }
 
 void init_slave() {
-  gpio_init(I2C_SLAVE_SDA);
   gpio_set_function(I2C_SLAVE_SDA, GPIO_FUNC_I2C);
   gpio_pull_up(I2C_SLAVE_SDA);
-  gpio_init(I2C_SLAVE_SCL);
   gpio_set_function(I2C_SLAVE_SCL, GPIO_FUNC_I2C);
   gpio_pull_up(I2C_SLAVE_SCL);
 

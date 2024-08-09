@@ -1,1 +1,1 @@
-/usr/lib64/ccache/c++ CMakeFiles/elf2uf2.dir/main.cpp.o -o elf2uf2 
+/sbin/c++ CMakeFiles/elf2uf2.dir/main.cpp.o -o elf2uf2

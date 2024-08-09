@@ -54,4 +54,5 @@ RadioLib/CMakeFiles/RadioLib.dir/src/protocols/APRS/APRS.cpp.obj: \
  /home/sioel0/1_Projects/pico_lora/include/RadioLib/src/protocols/APRS/../AX25/../../utils/CRC.h \
  /home/sioel0/1_Projects/pico_lora/include/RadioLib/src/protocols/APRS/../AX25/../../utils/../TypeDef.h \
  /home/sioel0/1_Projects/pico_lora/include/RadioLib/src/protocols/APRS/../AX25/../../utils/../Module.h \
+ /home/sioel0/1_Projects/pico_lora/include/RadioLib/src/protocols/APRS/../AX25/../../utils/FEC.h \
  /usr/arm-none-eabi/include/ctype.h

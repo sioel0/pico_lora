@@ -135,6 +135,7 @@ src/PicoHal/CMakeFiles/PicoHal.dir/PicoHal.cpp.obj: \
  /home/sioel0/1_Projects/pico_lora/include/RadioLib/src/protocols/AX25/../../utils/CRC.h \
  /home/sioel0/1_Projects/pico_lora/include/RadioLib/src/protocols/AX25/../../utils/../TypeDef.h \
  /home/sioel0/1_Projects/pico_lora/include/RadioLib/src/protocols/AX25/../../utils/../Module.h \
+ /home/sioel0/1_Projects/pico_lora/include/RadioLib/src/protocols/AX25/../../utils/FEC.h \
  /home/sioel0/1_Projects/pico_lora/include/RadioLib/src/protocols/Hellschreiber/Hellschreiber.h \
  /home/sioel0/1_Projects/pico_lora/include/RadioLib/src/protocols/Hellschreiber/../../TypeDef.h \
  /home/sioel0/1_Projects/pico_lora/include/RadioLib/src/protocols/Hellschreiber/../PhysicalLayer/PhysicalLayer.h \
@@ -149,8 +150,6 @@ src/PicoHal/CMakeFiles/PicoHal.dir/PicoHal.cpp.obj: \
  /home/sioel0/1_Projects/pico_lora/include/RadioLib/src/protocols/Pager/../../TypeDef.h \
  /home/sioel0/1_Projects/pico_lora/include/RadioLib/src/protocols/Pager/../PhysicalLayer/PhysicalLayer.h \
  /home/sioel0/1_Projects/pico_lora/include/RadioLib/src/protocols/Pager/../../utils/FEC.h \
- /home/sioel0/1_Projects/pico_lora/include/RadioLib/src/protocols/Pager/../../utils/../TypeDef.h \
- /home/sioel0/1_Projects/pico_lora/include/RadioLib/src/protocols/Pager/../../utils/../Module.h \
  /home/sioel0/1_Projects/pico_lora/include/RadioLib/src/protocols/RTTY/RTTY.h \
  /home/sioel0/1_Projects/pico_lora/include/RadioLib/src/protocols/RTTY/../../TypeDef.h \
  /home/sioel0/1_Projects/pico_lora/include/RadioLib/src/protocols/RTTY/../PhysicalLayer/PhysicalLayer.h \

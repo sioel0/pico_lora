@@ -50,4 +50,5 @@ RadioLib/CMakeFiles/RadioLib.dir/src/protocols/AX25/AX25.cpp.obj: \
  /home/sioel0/1_Projects/pico_lora/include/RadioLib/src/protocols/AX25/../BellModem/../Print/ITA2String.h \
  /home/sioel0/1_Projects/pico_lora/include/RadioLib/src/protocols/AX25/../../utils/CRC.h \
  /home/sioel0/1_Projects/pico_lora/include/RadioLib/src/protocols/AX25/../../utils/../TypeDef.h \
- /home/sioel0/1_Projects/pico_lora/include/RadioLib/src/protocols/AX25/../../utils/../Module.h
+ /home/sioel0/1_Projects/pico_lora/include/RadioLib/src/protocols/AX25/../../utils/../Module.h \
+ /home/sioel0/1_Projects/pico_lora/include/RadioLib/src/protocols/AX25/../../utils/FEC.h
