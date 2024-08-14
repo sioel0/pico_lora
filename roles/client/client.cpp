@@ -2,7 +2,9 @@
 #include <RadioLib.h>
 #include <stdint.h>
 #include <PicoHal.h>
-#include "comm.h"
+#include "comm.hh"
+#include <uart.hh>
+#include <protocol.hh>
 
 #define SPI_PORT spi1
 #define SPI_MISO 12
@@ -20,35 +22,39 @@ PicoHal* hal = new PicoHal(SPI_PORT, SPI_MISO, SPI_MOSI, SPI_SCK);
 
 SX1262 radio = new Module(hal, CS_PIN, INT_PIN, RST_PIN, BUSY_PIN);
 
+Comm comm = Comm(new Uart(), 3);
+
+bool received = false;
+
+void on_data_received() {
+  received = !received;
+}
+
 int main() {
-    stdio_init_all();
-    sleep_ms(10000);
-    //printf("[SX1262] Initializing client ... ");
-    //int state = radio.begin();
-    //if(state != RADIOLIB_ERR_NONE) {
-    //    printf("failed to initialize, code %d\n", state);
-    //    return 1;
+  stdio_init_all();
+  sleep_ms(10000);
+  gpio_init(PICO_DEFAULT_LED_PIN);
+  gpio_set_dir(PICO_DEFAULT_LED_PIN, GPIO_OUT);
+  //printf("[SX1262] Initializing client ... ");
+  //int state = radio.begin();
+  //if(state != RADIOLIB_ERR_NONE) {
+  //    printf("failed to initialize, code %d\n", state);
+  //    return 1;
+  //}
+  //printf("success!\n");
+
+  while(true) {
+    gpio_put(PICO_DEFAULT_LED_PIN, received);
+    //send a packet
+    //printf("[SX1262] Transmitting packet .. ");
+    //state = radio.transmit("Hello, World!");
+    //if(state == RADIOLIB_ERR_NONE) {
+    //    printf("success\n");
+
+    //    hal->delay(1000);
+    //} else {
+    //    printf("failed to send, code %d\n", state);
     //}
-    //printf("success!\n");
-    init_slave();
-    const uint8_t* data;
-
-    for(;;) {
-        if (there_is_data()) {
-          read_data();
-          data = get_received_data();
-          printf("Received: 0x%x  0x%x  0x%x\n", data[0], data[1], data[2]);
-        }
-        //send a packet
-        //printf("[SX1262] Transmitting packet .. ");
-        //state = radio.transmit("Hello, World!");
-        //if(state == RADIOLIB_ERR_NONE) {
-        //    printf("success\n");
-
-        //    hal->delay(1000);
-        //} else {
-        //    printf("failed to send, code %d\n", state);
-        //}
-    }
+  }
     return 0;
 }
