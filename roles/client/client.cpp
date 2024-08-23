@@ -16,25 +16,17 @@
 #define RST_PIN 15
 #define BUSY_PIN 2
 
-#define CLIENT
+#define PACKET_SIZE 3
 
 PicoHal* hal = new PicoHal(SPI_PORT, SPI_MISO, SPI_MOSI, SPI_SCK);
 
 SX1262 radio = new Module(hal, CS_PIN, INT_PIN, RST_PIN, BUSY_PIN);
 
-Comm comm = Comm(new Uart(), 3);
-
-bool received = false;
-
-void on_data_received() {
-  received = !received;
-}
+Comm comm = Comm(new Uart(), PACKET_SIZE);
 
 int main() {
   stdio_init_all();
-  sleep_ms(10000);
-  gpio_init(PICO_DEFAULT_LED_PIN);
-  gpio_set_dir(PICO_DEFAULT_LED_PIN, GPIO_OUT);
+  uint8_t* data;
   //printf("[SX1262] Initializing client ... ");
   //int state = radio.begin();
   //if(state != RADIOLIB_ERR_NONE) {
@@ -44,7 +36,10 @@ int main() {
   //printf("success!\n");
 
   while(true) {
-    gpio_put(PICO_DEFAULT_LED_PIN, received);
+    data = comm.read_data();
+    if(data[0] != 0x00) {
+      printf("Received: 0x%x 0x%x 0x%x\n", data[0], data[1], data[2]);
+    }
     //send a packet
     //printf("[SX1262] Transmitting packet .. ");
     //state = radio.transmit("Hello, World!");

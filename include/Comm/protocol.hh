@@ -3,9 +3,6 @@
 #ifndef PROTOCOL_HPP
 #define PROTOCOL_HPP
 
-// data received callback
-void on_data_received();
-
 class Protocol {
   public:
 
