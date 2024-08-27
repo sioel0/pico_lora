@@ -16,9 +16,6 @@ Uart::Uart(uart_inst_t *uart, uint br, uint tx, uint rx, uint data_bits, uint st
 
   gpio_set_function(_tx, UART_FUNCSEL_NUM(_uart, _tx));
   gpio_set_function(_rx, UART_FUNCSEL_NUM(_uart, _rx));
-  // used only for debug purpose
-  gpio_init(PICO_DEFAULT_LED_PIN);
-  gpio_set_dir(PICO_DEFAULT_LED_PIN, GPIO_OUT);
 
   uart_set_hw_flow(UART_ID, false, false);
   
@@ -33,8 +30,6 @@ void Uart::send_data(uint8_t *data, uint8_t size) {
 
 void Uart::read_data(uint8_t *dest, uint8_t size) {
   uart_read_blocking(_uart, dest, size);
-  led_on = !led_on;
-  gpio_put(PICO_DEFAULT_LED_PIN, led_on);
 }
 
 bool Uart::there_is_data() {

@@ -1,6 +1,6 @@
 add_executable(router router.cpp)
 
-target_link_libraries(router pico_stdlib hardware_uart hardware_spi hardware_gpio hardware_timer comm PicoHal RadioLib)
+target_link_libraries(router pico_stdlib pico_multicore hardware_uart hardware_spi hardware_gpio hardware_timer comm PicoHal RadioLib)
 
 pico_add_extra_outputs(router)
 
