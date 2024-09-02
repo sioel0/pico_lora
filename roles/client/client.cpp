@@ -31,20 +31,52 @@ uint8_t output_buff[PACKET_SIZE][BUFFER_SIZE];
 uint8_t output_read_idx = 0, output_write_idx = 0;
 auto_init_recursive_mutex(output_mutex);
 
+static bool there_is_lora_data = false;
+static bool transmit = false;
+static uint8_t count = 0;
+static bool initialized = false;
+
+void lora_input() {
+  // since the interrupt routine is the same both for I/O we have to make sure
+  // that we are processing data only when we are actually receiving it
+  if(!transmit) {
+    if(count == 0) {
+      there_is_lora_data = true;
+    }
+  }
+  // for some reason the interrupt routine is called twice for each packet received
+  // this is necessary to do not process the same packet twice
+  count++;
+  if(count == 2) {
+    count = 0;
+    transmit = false;
+  }
+}
+
 void lora_main() {
   PicoHal* hal = new PicoHal(SPI_PORT, SPI_MISO, SPI_MOSI, SPI_SCK);
   SX1262 radio = new Module(hal, CS_PIN, INT_PIN, RST_PIN, BUSY_PIN);
+
   uint8_t input_lora_data[PACKET_SIZE];
   uint8_t output_lora_data[PACKET_SIZE];
 
-  int i = 0, att = 0;
+  int i = 0;
 
-  radio.begin();
+  int state = radio.begin();
+  radio.setPacketReceivedAction(lora_input);
+  state = radio.startReceive();
+
+  if(state == RADIOLIB_ERR_NONE) {
+    initialized = true;
+  } else {
+    initialized = false;
+  }
 
   while(true) {
     // manage lora input
-    int state = radio.receive(input_lora_data, PACKET_SIZE);
-    if(state == RADIOLIB_ERR_NONE) {
+    if(there_is_lora_data) {
+      there_is_lora_data = false;
+      radio.readData(input_lora_data, PACKET_SIZE);
       recursive_mutex_enter_blocking(&input_mutex);
       {
         for(i = 0; i < PACKET_SIZE; ++i) {
@@ -60,22 +92,22 @@ void lora_main() {
     // manage lora output
     recursive_mutex_enter_blocking(&output_mutex); 
     {
-      att = 0;
       if(output_read_idx == output_write_idx - 1 || 
         (output_read_idx == BUFFER_SIZE - 1 && output_write_idx == 0)) {
         for(i = 0; i < PACKET_SIZE; ++i) {
           output_lora_data[i] = output_buff[i][output_read_idx];
         }
-        do {
-          radio.transmit(output_lora_data, PACKET_SIZE);
-          att++;
-        } while(state != RADIOLIB_ERR_NONE && att != MAX_TRY);
+        transmit = true;
+        state = radio.startTransmit(output_lora_data, PACKET_SIZE);
+        // move on the read idx only if data has been sent
         if(state == RADIOLIB_ERR_NONE) {
           output_read_idx++;
         }
+        sleep_ms(200); // this is necessary to give lora device enough time to send data before switching back to receive mode
         if(output_read_idx == BUFFER_SIZE) {
           output_read_idx = 0;
         }
+        radio.startReceive();
       }
     }
     recursive_mutex_exit(&output_mutex);
@@ -83,7 +115,7 @@ void lora_main() {
 }
 
 int main() {
-  stdio_init_all();
+  sleep_ms(2000);
   uint8_t* input_uart_data;
   uint8_t* output_uart_data = new uint8_t[PACKET_SIZE];
   Comm *comm = new Comm(new Uart(), PACKET_SIZE);
@@ -98,7 +130,6 @@ int main() {
     if(input_uart_data[0] != 0x00) {
       recursive_mutex_enter_blocking(&output_mutex);
       {
-        // data has been received
           for(i = 0; i < PACKET_SIZE; ++i) {
             output_buff[i][output_write_idx] = input_uart_data[i];
           }

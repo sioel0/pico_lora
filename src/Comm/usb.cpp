@@ -11,7 +11,7 @@ static bool data_ready = false;
 void received_data(void* param) {
   char c = stdio_getchar_timeout_us(READ_TIMEOUT);
   if(c != PICO_ERROR_TIMEOUT) {
-    // printf("\n"); // dummy printf, may be necessary
+    printf("\n", c); // dummy printf, may be necessary
     buff[idx] = c;
     idx++;
     data_ready = true;
