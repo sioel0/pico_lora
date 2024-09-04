@@ -115,9 +115,8 @@ void lora_main() {
 }
 
 int main() {
-  sleep_ms(2000);
   uint8_t* input_uart_data;
-  uint8_t* output_uart_data = new uint8_t[PACKET_SIZE];
+  uint8_t output_uart_data[PACKET_SIZE];
   Comm *comm = new Comm(new Uart(), PACKET_SIZE);
 
   int i = 0;
