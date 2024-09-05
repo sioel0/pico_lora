@@ -7,7 +7,10 @@
 #include <usb.hh>
 #include <protocol.hh>
 
+#define DEVICE_ADDRESS 0x00
+
 #define PACKET_SIZE 3
+#define LORA_PACKET_SIZE 4
 #define BUFFER_SIZE 10
 #define MAX_TRY 5
 
@@ -50,8 +53,8 @@ void lora_main() {
   PicoHal* hal = new PicoHal(SPI_PORT, SPI_MISO, SPI_MOSI, SPI_SCK);
   SX1262 radio = new Module(hal, CS_PIN, INT_PIN, RST_PIN, BUSY_PIN);
 
-  uint8_t input_lora_data[PACKET_SIZE];
-  uint8_t output_lora_data[PACKET_SIZE];
+  uint8_t input_lora_data[LORA_PACKET_SIZE];
+  uint8_t output_lora_data[LORA_PACKET_SIZE];
 
   int i = 0;
 
@@ -70,30 +73,37 @@ void lora_main() {
     // lora input
     if(there_is_lora_data) {
       there_is_lora_data = false;
-      radio.readData(input_lora_data, PACKET_SIZE);
-      recursive_mutex_enter_blocking(&input_mutex);
-      {
-        for(i = 0; i < PACKET_SIZE; ++i) {
-          input_buff[i][input_write_idx] = input_lora_data[i];
+      radio.readData(input_lora_data, LORA_PACKET_SIZE);
+      if(input_lora_data[0] == DEVICE_ADDRESS) {
+        recursive_mutex_enter_blocking(&input_mutex);
+        {
+          for(i = 0; i < PACKET_SIZE; ++i) {
+            input_buff[i][input_write_idx] = input_lora_data[i + LORA_PACKET_SIZE - PACKET_SIZE];
+          }
+          input_write_idx++;
+          if(input_write_idx == BUFFER_SIZE) {
+            input_write_idx = 0;
+          }
         }
-        input_write_idx++;
-        if(input_write_idx == BUFFER_SIZE) {
-          input_write_idx = 0;
-        }
+        recursive_mutex_exit(&input_mutex);
       }
-      recursive_mutex_exit(&input_mutex);
     }
     // lora output
     recursive_mutex_enter_blocking(&output_mutex);
     {
       // there is data that needs to be sent
-      if(output_read_idx == output_write_idx - 1 || 
-        (output_read_idx == BUFFER_SIZE - 1 && output_write_idx == 0)) {
+      if(output_read_idx < output_write_idx || 
+        (output_read_idx != 0 && output_write_idx == 0)) {
+        output_lora_data[1] = DEVICE_ADDRESS;
         for(i = 0; i < PACKET_SIZE; ++i) {
-          output_lora_data[i] = output_buff[i][output_read_idx];
+          if(i == 0) {
+            output_lora_data[i] = output_buff[i][output_read_idx];
+          } else {
+            output_lora_data[i + LORA_PACKET_SIZE - PACKET_SIZE] = output_buff[i][output_read_idx];
+          }
         }
         transmit = true;
-        state = radio.startTransmit(output_lora_data, PACKET_SIZE);
+        state = radio.startTransmit(output_lora_data, LORA_PACKET_SIZE);
         // move on the read idx only if data has been sent
         if(state == RADIOLIB_ERR_NONE) {
           output_read_idx++;
@@ -131,15 +141,14 @@ int main() {
         if(output_write_idx == BUFFER_SIZE) {
           output_write_idx = 0;
         }
-        printf("USB Data added to output buffer\n");
       }
       recursive_mutex_exit(&output_mutex);
     }
     // usb output
     recursive_mutex_enter_blocking(&input_mutex);
     {
-      if(input_read_idx == input_write_idx - 1 ||
-        (input_read_idx == BUFFER_SIZE - 1 && input_write_idx == 0)) {
+      if(input_read_idx < input_write_idx ||
+        (input_read_idx != 0 && input_write_idx == 0)) {
         for(i = 0; i < PACKET_SIZE; ++i) {
           output_usb_data[i] = input_buff[i][input_read_idx];
         }

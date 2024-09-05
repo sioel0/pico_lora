@@ -11,7 +11,7 @@ static bool data_ready = false;
 void received_data(void* param) {
   char c = stdio_getchar_timeout_us(READ_TIMEOUT);
   if(c != PICO_ERROR_TIMEOUT) {
-    printf("\n", c); // dummy printf, may be necessary
+    printf("\n", c); 
     buff[idx] = c;
     idx++;
     data_ready = true;
@@ -25,7 +25,7 @@ Usb::Usb() {
 
 void Usb::send_data(uint8_t* data, uint8_t size) {
   for(int i = 0; i < size; ++i) {
-    printf("%x", data[i]);
+    printf("%2.2x", data[i]);
   }
   printf("\n");
 }
