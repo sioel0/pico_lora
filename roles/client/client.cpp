@@ -6,6 +6,7 @@
 #include <comm.hh>
 #include <uart.hh>
 #include <protocol.hh>
+#include <hardware/watchdog.h>
 
 #define ROUTER_ADDRESS 0x00
 #define DEVICE_ADDRESS 0x01 // this can be any value between 0x01 and 0xFF
@@ -25,6 +26,8 @@
 #define RST_PIN 15 // reset pin
 #define BUSY_PIN 2 // busy pin which is optional but used on 1262
 
+#define RESET_PIN 16
+
 // used to store and manage data coming from the network
 uint8_t input_buff[PACKET_SIZE][BUFFER_SIZE];
 uint8_t input_read_idx = 0, input_write_idx = 0;
@@ -39,6 +42,17 @@ static bool there_is_lora_data = false;
 static bool transmit = false;
 static uint8_t count = 0;
 static bool initialized = false;
+
+void software_reset() {
+  watchdog_enable(1, 1); // enable 1ms watchdog
+  while(1); // busy wait for reboot
+}
+
+void gpio_irq_callback(uint gpio, uint32_t events) {
+  if(gpio == RESET_PIN) {
+    software_reset();
+  }
+}
 
 void lora_input() {
   // since the interrupt routine is the same both for I/O we have to make sure
@@ -126,6 +140,10 @@ int main() {
   uint8_t* input_uart_data;
   uint8_t output_uart_data[PACKET_SIZE];
   Comm *comm = new Comm(new Uart(), PACKET_SIZE);
+
+  gpio_init(RESET_PIN);
+  gpio_set_dir(RESET_PIN, GPIO_IN);
+  gpio_set_irq_enabled_with_callback(RESET_PIN, GPIO_IRQ_EDGE_RISE | GPIO_IRQ_EDGE_FALL, true, &gpio_irq_callback);
 
   int i = 0;
 

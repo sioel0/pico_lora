@@ -142,7 +142,8 @@ class Menu:
                 break
             else:
                 pass
-        self.exit()
+        if ending:
+            self.exit()
 
 
     def exit(self):

@@ -56,20 +56,29 @@ class SerialInput:
                 if inp[1] == "50":
                     t = time.time()
                     start_check[int(inp[0], 16) - 1] = t
-                    for i, st in enumerate(start_check):
-                        if st - t > 15:
-                            self.active[i] = False
-                        else:
-                            self.active[i] = True
+                    self.active[int(inp[0], 16) - 1] = True
                 elif inp[1] == "52":
                     self.emerg[int(inp[0], 16) - 1] = True
                     emerg_start[int(inp[0], 16) - 1] = time.time()
-            # reset emergency message
-            for idx, x in enumerate(emerg_start):
-                if x != 0:
-                    if time.time() - x > 5:
-                        x = 0
-                        self.emerg[i] = False
+            # reset emergency message and active
+            t = time.time()
+            for idx in range(len(self.lamps)):
+                if emerg_start[idx] != 0:
+                    if t - emerg_start[idx] > 5:
+                        emerg_start[idx] = 0
+                        self.emerg[idx] = False
+                    else:
+                        pass
+                else:
+                    pass
+                if self.active[idx]:
+                    if t - start_check[idx] > 15:
+                        self.active[idx] = False
+                    else:
+                        pass
+                else:
+                    pass
+
 
             self.stdscr.addstr(0, 0, self.title, curses.A_REVERSE)
             self.stdscr.addstr(0, 19, self.active_title, curses.A_REVERSE)
