@@ -10,6 +10,8 @@ TURN_PANIC_ON = b'\x02'
 TURN_PANIC_OFF = b'\x04'
 TURN_LIGHT_ON = b'\x08'
 TURN_LIGHT_OFF = b'\x10'
+TURN_MVMT_ON = b'\x11'
+TURN_MVMT_OFF = b'\x12'
 
 
 lamps_list = "./lamps.txt"
@@ -39,7 +41,7 @@ class Menu:
                 self.lamps.append(l.strip('\n'))
         self.lamps.append("Back")
         
-        self.actions = ["Turn light on", "Turn light off", "Turn panic on", "Turn panic off", "Reset", "Exit"]
+        self.actions = ["Turn light on", "Turn light off", "Turn panic on", "Turn panic off", "Turn movement on", "Turn movement off", "Reset", "Exit"]
         
         self.action_title = "Select action:"
         self.lamp_sel_title = "Select light:"
@@ -88,6 +90,10 @@ class Menu:
                         self.action = TURN_PANIC_ON
                     elif self.actions[current_selection] == "Turn panic off":
                         self.action = TURN_PANIC_OFF
+                    elif self.actions[current_selection] == "Turn movement on":
+                        self.action = TURN_MVMT_ON
+                    elif self.actions[current_selection] == "Turn movement off":
+                        self.action = TURN_MVMT_OFF
                     elif self.actions[current_selection] == "Reset":
                         self.action = TRIGGER_RESET
                     else:
