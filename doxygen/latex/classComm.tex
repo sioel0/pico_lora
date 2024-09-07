@@ -1,0 +1,79 @@
+\doxysection{Comm Class Reference}
+\hypertarget{classComm}{}\label{classComm}\index{Comm@{Comm}}
+
+
+High level abstraction layer of the serial communication module.  
+
+
+
+
+{\ttfamily \#include $<$comm.\+hh$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classComm_a3fc99d0ff11fb722f8bf84ee7159741d}{Comm}} (\mbox{\hyperlink{classProtocol}{Protocol}} \texorpdfstring{$\ast$}{*}proto, uint8\+\_\+t packet\+\_\+size)
+\begin{DoxyCompactList}\small\item\em Class constructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classComm_a4cec9898bd5d97c9e85c73b3725fe0ac}{send\+\_\+data}} (uint8\+\_\+t \texorpdfstring{$\ast$}{*}data)
+\begin{DoxyCompactList}\small\item\em This function is used to send data via the serial interface. \end{DoxyCompactList}\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classComm_a897bf935304d87d217fc5f08bb86d6c9}{read\+\_\+data}} ()
+\begin{DoxyCompactList}\small\item\em This function is used to read the serial interface received data. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+High level abstraction layer of the serial communication module. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classComm_a3fc99d0ff11fb722f8bf84ee7159741d}\label{classComm_a3fc99d0ff11fb722f8bf84ee7159741d} 
+\index{Comm@{Comm}!Comm@{Comm}}
+\index{Comm@{Comm}!Comm@{Comm}}
+\doxysubsubsection{\texorpdfstring{Comm()}{Comm()}}
+{\footnotesize\ttfamily Comm\+::\+Comm (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classProtocol}{Protocol}} \texorpdfstring{$\ast$}{*}}]{proto,  }\item[{uint8\+\_\+t}]{packet\+\_\+size }\end{DoxyParamCaption})}
+
+
+
+Class constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em proto} & a pointer to a hardware communication protocol abstraction class \\
+\hline
+{\em packet\+\_\+size} & of the communication protocol defined for the overall application \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classComm_a897bf935304d87d217fc5f08bb86d6c9}\label{classComm_a897bf935304d87d217fc5f08bb86d6c9} 
+\index{Comm@{Comm}!read\_data@{read\_data}}
+\index{read\_data@{read\_data}!Comm@{Comm}}
+\doxysubsubsection{\texorpdfstring{read\_data()}{read\_data()}}
+{\footnotesize\ttfamily uint8\+\_\+t \texorpdfstring{$\ast$}{*} Comm\+::read\+\_\+data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+This function is used to read the serial interface received data. 
+
+\begin{DoxyReturn}{Returns}
+a pointer to the serial interface received data This function return value may be either a pointer to the actual data or, to avoid making this function blocking, if any data has been received, a pointer to an array filled with 0x00. The returned data length will be exactly the same as @refe \doxylink{classComm}{Comm} packet size. 
+\end{DoxyReturn}
+\Hypertarget{classComm_a4cec9898bd5d97c9e85c73b3725fe0ac}\label{classComm_a4cec9898bd5d97c9e85c73b3725fe0ac} 
+\index{Comm@{Comm}!send\_data@{send\_data}}
+\index{send\_data@{send\_data}!Comm@{Comm}}
+\doxysubsubsection{\texorpdfstring{send\_data()}{send\_data()}}
+{\footnotesize\ttfamily void Comm\+::send\+\_\+data (\begin{DoxyParamCaption}\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{data }\end{DoxyParamCaption})}
+
+
+
+This function is used to send data via the serial interface. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & the data that will be sent The assumption for the {\ttfamily data} parameter is that the length is the same assumption \doxylink{classComm}{Comm}. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\+Comm/\mbox{\hyperlink{comm_8hh}{comm.\+hh}}\end{DoxyCompactItemize}

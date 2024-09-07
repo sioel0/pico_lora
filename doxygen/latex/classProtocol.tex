@@ -1,0 +1,93 @@
+\doxysection{Protocol Class Reference}
+\hypertarget{classProtocol}{}\label{classProtocol}\index{Protocol@{Protocol}}
+
+
+virtual class which represent the basic structure for the serial communication abstraction layer  
+
+
+
+
+{\ttfamily \#include $<$protocol.\+hh$>$}
+
+Inheritance diagram for Protocol\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classProtocol}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{classProtocol_a6133a7feeac96b9b5968e6d0dce58ec2}{send\+\_\+data}} (uint8\+\_\+t \texorpdfstring{$\ast$}{*}source, uint8\+\_\+t size)=0
+\begin{DoxyCompactList}\small\item\em This function is used to send data with the serial communication protocol. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classProtocol_ab8a8f936403b2bef56f054986b3514ce}{read\+\_\+data}} (uint8\+\_\+t \texorpdfstring{$\ast$}{*}dest, uint8\+\_\+t size)=0
+\begin{DoxyCompactList}\small\item\em This function is used to read data from the serial communication protocol. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classProtocol_a657c395dd19a0a70159bb9258dc363bc}{there\+\_\+is\+\_\+data}} ()=0
+\begin{DoxyCompactList}\small\item\em this function is used to check if there is any data on the receive buffer of the serial interface \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+virtual class which represent the basic structure for the serial communication abstraction layer 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classProtocol_ab8a8f936403b2bef56f054986b3514ce}\label{classProtocol_ab8a8f936403b2bef56f054986b3514ce} 
+\index{Protocol@{Protocol}!read\_data@{read\_data}}
+\index{read\_data@{read\_data}!Protocol@{Protocol}}
+\doxysubsubsection{\texorpdfstring{read\_data()}{read\_data()}}
+{\footnotesize\ttfamily virtual void Protocol\+::read\+\_\+data (\begin{DoxyParamCaption}\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{dest,  }\item[{uint8\+\_\+t}]{size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+This function is used to read data from the serial communication protocol. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dest} & a buffer to store the received data \\
+\hline
+{\em size} & the amount of data that will be read \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{classUart_aee63a5ab2d2e8738d2599b37c3363f9b}{Uart}}, and \mbox{\hyperlink{classUsb_aad150dcf203c76042f2d284cd9413eba}{Usb}}.
+
+\Hypertarget{classProtocol_a6133a7feeac96b9b5968e6d0dce58ec2}\label{classProtocol_a6133a7feeac96b9b5968e6d0dce58ec2} 
+\index{Protocol@{Protocol}!send\_data@{send\_data}}
+\index{send\_data@{send\_data}!Protocol@{Protocol}}
+\doxysubsubsection{\texorpdfstring{send\_data()}{send\_data()}}
+{\footnotesize\ttfamily virtual void Protocol\+::send\+\_\+data (\begin{DoxyParamCaption}\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{source,  }\item[{uint8\+\_\+t}]{size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+This function is used to send data with the serial communication protocol. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em source} & a buffer containing the data that will be sent \\
+\hline
+{\em size} & the {\ttfamily source} length \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{classUart_a0bf666631f74cb6a2a91be4d6690a1d7}{Uart}}, and \mbox{\hyperlink{classUsb_a8ac4ef8eddd061426988a038fef47ca7}{Usb}}.
+
+\Hypertarget{classProtocol_a657c395dd19a0a70159bb9258dc363bc}\label{classProtocol_a657c395dd19a0a70159bb9258dc363bc} 
+\index{Protocol@{Protocol}!there\_is\_data@{there\_is\_data}}
+\index{there\_is\_data@{there\_is\_data}!Protocol@{Protocol}}
+\doxysubsubsection{\texorpdfstring{there\_is\_data()}{there\_is\_data()}}
+{\footnotesize\ttfamily virtual bool Protocol\+::there\+\_\+is\+\_\+data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+this function is used to check if there is any data on the receive buffer of the serial interface 
+
+
+
+Implemented in \mbox{\hyperlink{classUart_a2d0031c45b99e0a712cb79e5af022aa5}{Uart}}, and \mbox{\hyperlink{classUsb_a45561600ce700af9bf6953353b96deac}{Usb}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\+Comm/\mbox{\hyperlink{protocol_8hh}{protocol.\+hh}}\end{DoxyCompactItemize}

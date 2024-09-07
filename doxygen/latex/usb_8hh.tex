@@ -1,0 +1,37 @@
+\doxysection{include/\+Comm/usb.hh File Reference}
+\hypertarget{usb_8hh}{}\label{usb_8hh}\index{include/Comm/usb.hh@{include/Comm/usb.hh}}
+
+
+This file contains the usb abstraction layer implementation.  
+
+
+{\ttfamily \#include $<$protocol.\+hh$>$}\newline
+{\ttfamily \#include $<$cstdint$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classUsb}{Usb}}
+\begin{DoxyCompactList}\small\item\em usb abstraction layer for the serial communication \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{usb_8hh_a18e13c9ac88403c42395bb0af487eb2d}\label{usb_8hh_a18e13c9ac88403c42395bb0af487eb2d} 
+\#define {\bfseries READ\+\_\+\+TIMEOUT}~100 \texorpdfstring{$\ast$}{*} 1000 /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} max usb read timeout 100ms\texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{usb_8hh_a212979f5fc9dcf0a420e90b9b21d780a}\label{usb_8hh_a212979f5fc9dcf0a420e90b9b21d780a} 
+\#define {\bfseries MAX\+\_\+\+BUFF\+\_\+\+SIZE}~10 /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} maximum data buffer size \texorpdfstring{$\ast$}{*}/
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{usb_8hh_a4db294cdbc99cd1208988c8b4395393d}\label{usb_8hh_a4db294cdbc99cd1208988c8b4395393d} 
+void {\bfseries received\+\_\+data} (void \texorpdfstring{$\ast$}{*})
+\begin{DoxyCompactList}\small\item\em data reception callback function \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This file contains the usb abstraction layer implementation. 
+
+\begin{DoxyAuthor}{Author}
+sioel0 
+\end{DoxyAuthor}

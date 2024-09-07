@@ -1,0 +1,48 @@
+\doxysection{include/\+Comm/uart.hh File Reference}
+\hypertarget{uart_8hh}{}\label{uart_8hh}\index{include/Comm/uart.hh@{include/Comm/uart.hh}}
+
+
+This file contains the \doxylink{classUart}{Uart} abstraction layer implementation.  
+
+
+{\ttfamily \#include $<$hardware/uart.\+h$>$}\newline
+{\ttfamily \#include $<$pico/stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$cstdint$>$}\newline
+{\ttfamily \#include $<$protocol.\+hh$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classUart}{Uart}}
+\begin{DoxyCompactList}\small\item\em \doxylink{classUart}{Uart} abstraction layer This class is an implementation of the \doxylink{classProtocol}{Protocol} virtual class, this class can be used with the \doxylink{classComm}{Comm} class to create a full communication protocol abstraction stack. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{uart_8hh_a1de69c73f829a03f46f5e7690da7e79a}\label{uart_8hh_a1de69c73f829a03f46f5e7690da7e79a} 
+\#define {\bfseries UART\+\_\+\+ID}~uart0 /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} default uart interface \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{uart_8hh_a3bb17f5daa2b1eaef58c8aa2d989e27e}\label{uart_8hh_a3bb17f5daa2b1eaef58c8aa2d989e27e} 
+\#define {\bfseries TX\+\_\+\+PIN}~0 /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} default tx pin \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{uart_8hh_aa7089c01538b339ae745173c117f95b9}\label{uart_8hh_aa7089c01538b339ae745173c117f95b9} 
+\#define {\bfseries RX\+\_\+\+PIN}~1 /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} default rx pin \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{uart_8hh_ad4455691936f92fdd6c37566fc58ba1f}\label{uart_8hh_ad4455691936f92fdd6c37566fc58ba1f} 
+\#define {\bfseries BAUD\+\_\+\+RATE}~9600 /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} default baudrate \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{uart_8hh_a418ddb806712895ba784cfdcaa92b715}\label{uart_8hh_a418ddb806712895ba784cfdcaa92b715} 
+\#define {\bfseries DATA\+\_\+\+BITS}~8 /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} default data bits number \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{uart_8hh_abd1123d1a3a1f52c36d99b27e993e282}\label{uart_8hh_abd1123d1a3a1f52c36d99b27e993e282} 
+\#define {\bfseries STOP\+\_\+\+BITS}~1 /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} default number of stop bits \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{uart_8hh_af6996d12e71a534569c41a25de7d6d52}\label{uart_8hh_af6996d12e71a534569c41a25de7d6d52} 
+\#define {\bfseries PARITY}~UART\+\_\+\+PARITY\+\_\+\+NONE /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} default parity bit setting \texorpdfstring{$\ast$}{*}/
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This file contains the \doxylink{classUart}{Uart} abstraction layer implementation. 
+
+\begin{DoxyAuthor}{Author}
+sioel0 
+\end{DoxyAuthor}

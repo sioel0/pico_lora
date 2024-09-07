@@ -1,0 +1,125 @@
+\doxysection{Uart Class Reference}
+\hypertarget{classUart}{}\label{classUart}\index{Uart@{Uart}}
+
+
+\doxylink{classUart}{Uart} abstraction layer This class is an implementation of the \doxylink{classProtocol}{Protocol} virtual class, this class can be used with the \doxylink{classComm}{Comm} class to create a full communication protocol abstraction stack.  
+
+
+
+
+{\ttfamily \#include $<$uart.\+hh$>$}
+
+Inheritance diagram for Uart\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classUart}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classUart_aebdf247b9679193e94794dcdf05c5310}{Uart}} (uart\+\_\+inst\+\_\+t \texorpdfstring{$\ast$}{*}uart=UART\+\_\+\+ID, uint br=BAUD\+\_\+\+RATE, uint tx=TX\+\_\+\+PIN, uint rx=RX\+\_\+\+PIN, uint data\+\_\+bits=DATA\+\_\+\+BITS, uint stop\+\_\+bits=STOP\+\_\+\+BITS, uart\+\_\+parity\+\_\+t parity=PARITY)
+\begin{DoxyCompactList}\small\item\em \doxylink{classUart}{Uart} constructor \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classUart_a0bf666631f74cb6a2a91be4d6690a1d7}{send\+\_\+data}} (uint8\+\_\+t \texorpdfstring{$\ast$}{*}, uint8\+\_\+t) override
+\begin{DoxyCompactList}\small\item\em This function is used to send data with the serial communication protocol. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classUart_aee63a5ab2d2e8738d2599b37c3363f9b}{read\+\_\+data}} (uint8\+\_\+t \texorpdfstring{$\ast$}{*}, uint8\+\_\+t) override
+\begin{DoxyCompactList}\small\item\em This function is used to read data from the serial communication protocol. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classUart_a2d0031c45b99e0a712cb79e5af022aa5}{there\+\_\+is\+\_\+data}} () override
+\begin{DoxyCompactList}\small\item\em this function is used to check if there is any data on the receive buffer of the serial interface \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{classUart}{Uart} abstraction layer This class is an implementation of the \doxylink{classProtocol}{Protocol} virtual class, this class can be used with the \doxylink{classComm}{Comm} class to create a full communication protocol abstraction stack. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classUart_aebdf247b9679193e94794dcdf05c5310}\label{classUart_aebdf247b9679193e94794dcdf05c5310} 
+\index{Uart@{Uart}!Uart@{Uart}}
+\index{Uart@{Uart}!Uart@{Uart}}
+\doxysubsubsection{\texorpdfstring{Uart()}{Uart()}}
+{\footnotesize\ttfamily Uart\+::\+Uart (\begin{DoxyParamCaption}\item[{uart\+\_\+inst\+\_\+t \texorpdfstring{$\ast$}{*}}]{uart = {\ttfamily UART\+\_\+ID},  }\item[{uint}]{br = {\ttfamily BAUD\+\_\+RATE},  }\item[{uint}]{tx = {\ttfamily TX\+\_\+PIN},  }\item[{uint}]{rx = {\ttfamily RX\+\_\+PIN},  }\item[{uint}]{data\+\_\+bits = {\ttfamily DATA\+\_\+BITS},  }\item[{uint}]{stop\+\_\+bits = {\ttfamily STOP\+\_\+BITS},  }\item[{uart\+\_\+parity\+\_\+t}]{parity = {\ttfamily PARITY} }\end{DoxyParamCaption})}
+
+
+
+\doxylink{classUart}{Uart} constructor 
+
+parity bit setting 
+\begin{DoxyParams}{Parameters}
+{\em uart} & pointer to the uart interface that will be used \\
+\hline
+{\em br} & baudrate that will be used for the communication \\
+\hline
+{\em tx} & tx pin for the uart interface of choice \\
+\hline
+{\em rx} & rx pin for the uart interface of choice \\
+\hline
+{\em data\+\_\+bits} & number of data bits that will be used in uart communication, it can be in the interval \mbox{[}5, 9\mbox{]} \\
+\hline
+{\em stop\+\_\+bits} & number of stop bits that will be used for the communication, it can be either 1 or 2 \\
+\hline
+{\em parity} & thte parity option which can be any of uart\+\_\+parity\+\_\+t defined in \href{https://www.raspberrypi.com/documentation/pico-sdk/hardware.html\#enumerations-14}{\texttt{ pico-\/sdk}} \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classUart_aee63a5ab2d2e8738d2599b37c3363f9b}\label{classUart_aee63a5ab2d2e8738d2599b37c3363f9b} 
+\index{Uart@{Uart}!read\_data@{read\_data}}
+\index{read\_data@{read\_data}!Uart@{Uart}}
+\doxysubsubsection{\texorpdfstring{read\_data()}{read\_data()}}
+{\footnotesize\ttfamily void Uart\+::read\+\_\+data (\begin{DoxyParamCaption}\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{,  }\item[{uint8\+\_\+t}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+This function is used to read data from the serial communication protocol. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dest} & a buffer to store the received data \\
+\hline
+{\em size} & the amount of data that will be read \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classProtocol_ab8a8f936403b2bef56f054986b3514ce}{Protocol}}.
+
+\Hypertarget{classUart_a0bf666631f74cb6a2a91be4d6690a1d7}\label{classUart_a0bf666631f74cb6a2a91be4d6690a1d7} 
+\index{Uart@{Uart}!send\_data@{send\_data}}
+\index{send\_data@{send\_data}!Uart@{Uart}}
+\doxysubsubsection{\texorpdfstring{send\_data()}{send\_data()}}
+{\footnotesize\ttfamily void Uart\+::send\+\_\+data (\begin{DoxyParamCaption}\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{,  }\item[{uint8\+\_\+t}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+This function is used to send data with the serial communication protocol. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em source} & a buffer containing the data that will be sent \\
+\hline
+{\em size} & the {\ttfamily source} length \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classProtocol_a6133a7feeac96b9b5968e6d0dce58ec2}{Protocol}}.
+
+\Hypertarget{classUart_a2d0031c45b99e0a712cb79e5af022aa5}\label{classUart_a2d0031c45b99e0a712cb79e5af022aa5} 
+\index{Uart@{Uart}!there\_is\_data@{there\_is\_data}}
+\index{there\_is\_data@{there\_is\_data}!Uart@{Uart}}
+\doxysubsubsection{\texorpdfstring{there\_is\_data()}{there\_is\_data()}}
+{\footnotesize\ttfamily bool Uart\+::there\+\_\+is\+\_\+data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+this function is used to check if there is any data on the receive buffer of the serial interface 
+
+
+
+Implements \mbox{\hyperlink{classProtocol_a657c395dd19a0a70159bb9258dc363bc}{Protocol}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\+Comm/\mbox{\hyperlink{uart_8hh}{uart.\+hh}}\end{DoxyCompactItemize}

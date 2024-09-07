@@ -1,0 +1,25 @@
+\doxysection{protocol.\+hh}
+\hypertarget{protocol_8hh_source}{}\label{protocol_8hh_source}\index{include/Comm/protocol.hh@{include/Comm/protocol.hh}}
+\mbox{\hyperlink{protocol_8hh}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#ifndef\ PROTOCOL\_HPP}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#define\ PROTOCOL\_HPP}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classProtocol}{Protocol}}\ \{}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classProtocol_a6133a7feeac96b9b5968e6d0dce58ec2}{send\_data}}(uint8\_t*\ source,\ uint8\_t\ size)\ =\ 0;}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classProtocol_ab8a8f936403b2bef56f054986b3514ce}{read\_data}}(uint8\_t*\ dest,\ uint8\_t\ size)\ =\ 0;}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classProtocol_a657c395dd19a0a70159bb9258dc363bc}{there\_is\_data}}()\ =\ 0;}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classProtocol}{\string~Protocol}}()\ \{\}}
+\DoxyCodeLine{00039\ \};}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ PROTOCOL\_HPP\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

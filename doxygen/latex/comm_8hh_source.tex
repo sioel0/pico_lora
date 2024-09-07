@@ -1,0 +1,26 @@
+\doxysection{comm.\+hh}
+\hypertarget{comm_8hh_source}{}\label{comm_8hh_source}\index{include/Comm/comm.hh@{include/Comm/comm.hh}}
+\mbox{\hyperlink{comm_8hh}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#ifndef\ LIB\_HH}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#define\ LIB\_HH}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <hardware/uart.h>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{protocol_8hh}{protocol.hh}}>}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classComm}{Comm}}\ \{}
+\DoxyCodeLine{00020\ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00024\ \ \ \ \ \mbox{\hyperlink{classProtocol}{Protocol}}\ *\_proto;\ }
+\DoxyCodeLine{00030\ \ \ \ \ uint8\_t\ \_packet\_size;}
+\DoxyCodeLine{00034\ \ \ \ \ uint8\_t*\ \_mcu\_received\_data;}
+\DoxyCodeLine{00038\ \ \ \ \ uint8\_t*\ \_NO\_DATA\_AVAILABLE;}
+\DoxyCodeLine{00039\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00045\ \ \ \ \ \mbox{\hyperlink{classComm_a3fc99d0ff11fb722f8bf84ee7159741d}{Comm}}(\mbox{\hyperlink{classProtocol}{Protocol}}*\ proto,\ uint8\_t\ packet\_size);}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classComm_a4cec9898bd5d97c9e85c73b3725fe0ac}{send\_data}}(uint8\_t*\ data);}
+\DoxyCodeLine{00060\ \ \ \ \ uint8\_t*\ \mbox{\hyperlink{classComm_a897bf935304d87d217fc5f08bb86d6c9}{read\_data}}();}
+\DoxyCodeLine{00061\ \};}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

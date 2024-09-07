@@ -1,0 +1,51 @@
+\doxysection{uart.\+hh}
+\hypertarget{uart_8hh_source}{}\label{uart_8hh_source}\index{include/Comm/uart.hh@{include/Comm/uart.hh}}
+\mbox{\hyperlink{uart_8hh}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#ifndef\ UART\_HH}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#define\ UART\_HH}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <hardware/uart.h>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <pico/stdlib.h>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <cstdint>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{protocol_8hh}{protocol.hh}}>}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#define\ UART\_ID\ uart0\ }}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#define\ TX\_PIN\ 0\ }}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#define\ RX\_PIN\ 1\ }}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#define\ BAUD\_RATE\ 9600\ }}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#define\ DATA\_BITS\ 8\ }}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#define\ STOP\_BITS\ 1\ }}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#define\ PARITY\ UART\_PARITY\_NONE\ }}
+\DoxyCodeLine{00031\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classUart}{Uart}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classProtocol}{Protocol}}\ \{}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00034\ \ \ \ \ uart\_inst\_t\ *\_uart;\ }
+\DoxyCodeLine{00035\ \ \ \ \ uint\ \_br;\ }
+\DoxyCodeLine{00036\ \ \ \ \ uint\ \_tx;\ }
+\DoxyCodeLine{00037\ \ \ \ \ uint\ \_rx;\ }
+\DoxyCodeLine{00038\ \ \ \ \ uint\ \_data\_bits;\ }
+\DoxyCodeLine{00039\ \ \ \ \ uint\ \_stop\_bits;\ }
+\DoxyCodeLine{00040\ \ \ \ \ uart\_parity\_t\ \_parity;\ }
+\DoxyCodeLine{00042\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00053\ \ \ \ \ \mbox{\hyperlink{classUart_aebdf247b9679193e94794dcdf05c5310}{Uart}}(}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ uart\_inst\_t\ *uart\ =\ UART\_ID,}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ uint\ br\ =\ BAUD\_RATE,}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ uint\ tx\ =\ TX\_PIN,}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ uint\ rx\ =\ RX\_PIN,}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ uint\ data\_bits\ =\ DATA\_BITS,}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ uint\ stop\_bits\ =\ STOP\_BITS,}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ uart\_parity\_t\ parity\ =\ PARITY}
+\DoxyCodeLine{00061\ \ \ \ \ );}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classUart_a0bf666631f74cb6a2a91be4d6690a1d7}{send\_data}}(uint8\_t*,\ uint8\_t)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classUart_aee63a5ab2d2e8738d2599b37c3363f9b}{read\_data}}(uint8\_t*,\ uint8\_t)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classUart_a2d0031c45b99e0a712cb79e5af022aa5}{there\_is\_data}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00081\ \};}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

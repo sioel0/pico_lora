@@ -1,0 +1,58 @@
+\begin{theindex}
+
+  \item {Comm}, \hyperpage{9}
+    \subitem {Comm}, \hyperpage{9}
+    \subitem {read\_data}, \hyperpage{10}
+    \subitem {send\_data}, \hyperpage{10}
+
+  \indexspace
+
+  \item {include/Comm/comm.hh}, \hyperpage{17}
+  \item {include/Comm/protocol.hh}, \hyperpage{18}
+  \item {include/Comm/uart.hh}, \hyperpage{18, 19}
+  \item {include/Comm/usb.hh}, \hyperpage{20}
+
+  \indexspace
+
+  \item {pico\_lora}, \hyperpage{1}
+  \item {Protocol}, \hyperpage{10}
+    \subitem {read\_data}, \hyperpage{11}
+    \subitem {send\_data}, \hyperpage{11}
+    \subitem {there\_is\_data}, \hyperpage{11}
+
+  \indexspace
+
+  \item {read\_data}
+    \subitem {Comm}, \hyperpage{10}
+    \subitem {Protocol}, \hyperpage{11}
+    \subitem {Uart}, \hyperpage{13}
+    \subitem {Usb}, \hyperpage{14}
+
+  \indexspace
+
+  \item {send\_data}
+    \subitem {Comm}, \hyperpage{10}
+    \subitem {Protocol}, \hyperpage{11}
+    \subitem {Uart}, \hyperpage{13}
+    \subitem {Usb}, \hyperpage{15}
+
+  \indexspace
+
+  \item {there\_is\_data}
+    \subitem {Protocol}, \hyperpage{11}
+    \subitem {Uart}, \hyperpage{13}
+    \subitem {Usb}, \hyperpage{15}
+
+  \indexspace
+
+  \item {Uart}, \hyperpage{12}
+    \subitem {read\_data}, \hyperpage{13}
+    \subitem {send\_data}, \hyperpage{13}
+    \subitem {there\_is\_data}, \hyperpage{13}
+    \subitem {Uart}, \hyperpage{12}
+  \item {Usb}, \hyperpage{14}
+    \subitem {read\_data}, \hyperpage{14}
+    \subitem {send\_data}, \hyperpage{15}
+    \subitem {there\_is\_data}, \hyperpage{15}
+
+\end{theindex}

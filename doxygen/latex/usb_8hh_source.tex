@@ -1,0 +1,29 @@
+\doxysection{usb.\+hh}
+\hypertarget{usb_8hh_source}{}\label{usb_8hh_source}\index{include/Comm/usb.hh@{include/Comm/usb.hh}}
+\mbox{\hyperlink{usb_8hh}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#ifndef\ USB\_HH}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#define\ USB\_HH}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{protocol_8hh}{protocol.hh}}>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <cstdint>}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ READ\_TIMEOUT\ 100\ *\ 1000\ }}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#define\ MAX\_BUFF\_SIZE\ 10\ }}
+\DoxyCodeLine{00019\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{usb_8hh_a4db294cdbc99cd1208988c8b4395393d}{received\_data}}(\textcolor{keywordtype}{void}*);}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00025\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classUsb}{Usb}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classProtocol}{Protocol}}\ \{}
+\DoxyCodeLine{00026\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00030\ \ \ \ \ \mbox{\hyperlink{classUsb_ad932fef75a91a0584b37cd5fc416be59}{Usb}}();}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classUsb_a8ac4ef8eddd061426988a038fef47ca7}{send\_data}}(uint8\_t*,\ uint8\_t)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classUsb_aad150dcf203c76042f2d284cd9413eba}{read\_data}}(uint8\_t*,\ uint8\_t)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classUsb_a45561600ce700af9bf6953353b96deac}{there\_is\_data}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00050\ \};}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}
