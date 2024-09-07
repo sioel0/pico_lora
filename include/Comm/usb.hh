@@ -1,3 +1,9 @@
+/**
+ * @file usb.hh
+ * @author sioel0
+ * @brief This file contains the usb abstraction layer implementation
+ */
+
 #ifndef USB_HH
 #define USB_HH
 
