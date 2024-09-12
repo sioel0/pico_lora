@@ -10,8 +10,8 @@ TURN_PANIC_ON = b'\x02'
 TURN_PANIC_OFF = b'\x04'
 TURN_LIGHT_ON = b'\x08'
 TURN_LIGHT_OFF = b'\x10'
-TURN_MVMT_ON = b'\x11'
-TURN_MVMT_OFF = b'\x12'
+TURN_MVMT_ON = b'\x20'
+TURN_MVMT_OFF = b'\x40'
 
 
 lamps_list = "./lamps.txt"
